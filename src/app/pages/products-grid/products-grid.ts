@@ -1,9 +1,10 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { Product } from '../../models/product';
+import { ProductCard } from '../../components/product-card/product-card';
 
 @Component({
   selector: 'app-products-grid',
-  imports: [],
+  imports: [ProductCard],
   templateUrl: './products-grid.html',
   styleUrl: './products-grid.scss',
 })
