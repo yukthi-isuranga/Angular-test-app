@@ -5,7 +5,8 @@ import { Yukthi } from './yukthi/yukthi';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Yukthi],
-  templateUrl: './app.html',
+  // templateUrl: './app.html',
+  template: `<h1 class="bg-red-500">xxxxx</h1>`,
   styleUrl: './app.scss',
 })
 export class App {
