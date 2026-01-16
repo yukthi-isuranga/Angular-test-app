@@ -79,7 +79,7 @@ export default class ProductsGrid {
       imageUrl: 'https://picsum.photos/id/180/400/400',
       rating: 4.5,
       reviewCount: 120,
-      inStock: true,
+      inStock: false,
       category: 'Electronics',
     },
     {
