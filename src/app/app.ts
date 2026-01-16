@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Yukthi } from './yukthi/yukthi';
+import { Header } from './layout/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Yukthi],
+  imports: [RouterOutlet, Header],
   // templateUrl: './app.html',
-  template: `<h1 class="text-2xl p-6">Yukthi Isuranga Bombuwala</h1>`,
+  template: ` <app-header />
+    <router-outlet />`,
   styleUrl: './app.scss',
 })
 export class App {
