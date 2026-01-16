@@ -6,7 +6,7 @@ import { Yukthi } from './yukthi/yukthi';
   selector: 'app-root',
   imports: [RouterOutlet, Yukthi],
   // templateUrl: './app.html',
-  template: `<h1 class="bg-red-500">xxxxx</h1>`,
+  template: `<h1 class="text-2xl p-6">Yukthi Isuranga Bombuwala</h1>`,
   styleUrl: './app.scss',
 })
 export class App {
