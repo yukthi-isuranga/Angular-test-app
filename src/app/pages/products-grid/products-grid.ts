@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './products-grid.html',
   styleUrl: './products-grid.scss',
 })
-export class ProductsGrid {
-
-}
+export default class ProductsGrid {}
