@@ -301,7 +301,11 @@ export default class ProductsGrid {
     },
   ]);
 
-  filterdProducts = computed(() =>
-    this.products().filter((p) => p.category.toLocaleLowerCase() === this.category().toLowerCase())
-  );
+  filterdProducts = computed(() => {
+    if (this.category() === 'all') return this.products();
+
+    return this.products().filter(
+      (p) => p.category.toLocaleLowerCase() === this.category().toLowerCase()
+    );
+  });
 }
