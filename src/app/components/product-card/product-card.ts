@@ -1,14 +1,27 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Product } from '../../models/product';
-import { MatAnchor } from '@angular/material/button';
+import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { EcommerceStore } from '../../ecommerce-store';
 
 @Component({
   selector: 'app-product-card',
-  imports: [MatAnchor, MatIcon],
+  imports: [MatAnchor, MatIcon, MatIconButton],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })
 export class ProductCard {
   product = input.required<Product>();
+
+  store = inject(EcommerceStore);
+
+  isInWishlist = computed(() => this.store.wishlistItems().find((p) => p.id === this.product().id));
+
+  toggleWishlist(product: Product) {
+    if (this.isInWishlist()) {
+      // remove this
+    } else {
+      this.store.addToWishlist(product);
+    }
+  }
 }
