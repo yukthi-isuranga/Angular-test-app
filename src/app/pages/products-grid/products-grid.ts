@@ -1,73 +1,27 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../../components/product-card/product-card';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import { MatNavList, MatListItem, MatListItemTitle } from '@angular/material/list';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products-grid',
-  imports: [ProductCard],
+  imports: [
+    ProductCard,
+    MatSidenav,
+    MatSidenavContainer,
+    MatSidenavContent,
+    MatNavList,
+    MatListItem,
+    MatListItemTitle,
+    RouterLink,
+  ],
   templateUrl: './products-grid.html',
   styleUrl: './products-grid.scss',
 })
 export default class ProductsGrid {
   category = input<string>('all');
-
-  // products = signal<Product[]>([
-  //   {
-  //     id: '1',
-  //     name: 'Wireless Headphones',
-  //     description: 'Noise-cancelling over-ear wireless headphones.',
-  //     price: 24999,
-  //     imageUrl: 'https://picsum.photos/id/180/400/400',
-  //     rating: 4.5,
-  //     reviewCount: 120,
-  //     inStock: true,
-  //     category: 'Electronics',
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Smart Watch',
-  //     description: 'Water-resistant smart watch with health tracking.',
-  //     price: 18999,
-  //     imageUrl: 'https://picsum.photos/id/1080/400/400',
-  //     rating: 4.2,
-  //     reviewCount: 85,
-  //     inStock: true,
-  //     category: 'Wearables',
-  //   },
-  //   {
-  //     id: '3',
-  //     name: 'Bluetooth Speaker',
-  //     description: 'Portable Bluetooth speaker with deep bass.',
-  //     price: 9999,
-  //     imageUrl: 'https://picsum.photos/id/250/400/400',
-  //     rating: 4.0,
-  //     reviewCount: 60,
-  //     inStock: false,
-  //     category: 'Audio',
-  //   },
-  //   {
-  //     id: '4',
-  //     name: 'Laptop Backpack',
-  //     description: 'Durable backpack for 15-inch laptops.',
-  //     price: 5499,
-  //     imageUrl: 'https://picsum.photos/id/21/400/400',
-  //     rating: 4.7,
-  //     reviewCount: 210,
-  //     inStock: true,
-  //     category: 'Accessories',
-  //   },
-  //   {
-  //     id: '5',
-  //     name: 'Mechanical Keyboard',
-  //     description: 'RGB mechanical keyboard with tactile keys.',
-  //     price: 15999,
-  //     imageUrl: 'https://picsum.photos/id/1060/400/400',
-  //     rating: 4.4,
-  //     reviewCount: 140,
-  //     inStock: true,
-  //     category: 'Computers',
-  //   },
-  // ]);
 
   products = signal<Product[]>([
     // 🔌 Electronics
@@ -305,7 +259,16 @@ export default class ProductsGrid {
     if (this.category() === 'all') return this.products();
 
     return this.products().filter(
-      (p) => p.category.toLocaleLowerCase() === this.category().toLowerCase()
+      (p) => p.category.toLocaleLowerCase() === this.category().toLowerCase(),
     );
   });
+
+  categories = signal<string[]>([
+    'all',
+    'electronics',
+    'wearables',
+    'audio',
+    'accessories',
+    'computers',
+  ]);
 }
