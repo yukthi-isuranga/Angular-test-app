@@ -3,9 +3,13 @@
     <div class="p-6">
       <h2 class="text-lg text-gray-900">Categories</h2>
       <mat-nav-list>
-        @for (category of categories(); track category) {
-          <mat-list-item class="my-2" [routerLink]="['/products', category]">
-            <span matListItemTitle>{{ category }}</span>
+        @for (cat of categories(); track cat) {
+          <mat-list-item
+            class="my-2"
+            [routerLink]="['/products', cat]"
+            [activated]="cat === category()"
+          >
+            <span matListItemTitle>{{ cat | titlecase }}</span>
           </mat-list-item>
         }
       </mat-nav-list>
