@@ -19,7 +19,8 @@ export class ProductCard {
 
   toggleWishlist(product: Product) {
     if (this.isInWishlist()) {
-      // remove this
+      // remove wishlist
+      this.store.removeFromWishlist(product);
     } else {
       this.store.addToWishlist(product);
     }
